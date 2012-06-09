@@ -31,6 +31,10 @@ class Reddit
   key :text
 end
 
+get '/' do
+  { message: 'this is not the route you want' }.to_json
+end
+
 get '/hnews' do
   content_type 'application/json'
   HackerNews.all.to_json
