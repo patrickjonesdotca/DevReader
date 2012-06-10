@@ -37,15 +37,24 @@ end
 
 get '/hnews' do
   content_type 'application/json'
-  HackerNews.all.to_json
+  {
+    source: 'hacker_news',
+	results: HackerNews.all
+  }.to_json
 end
 
 get '/proggit' do
   content_type 'application/json'
-  Proggit.all.to_json
+  {
+    source: 'proggit',
+	results: Proggit.all
+  }.to_json
 end
 
 get '/reddit' do
   content_type 'application/json'
-  Reddit.all.to_json
+  {
+    soruce: 'reddit',
+	results: Reddit.all
+  }.to_json
 end
