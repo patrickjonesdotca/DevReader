@@ -32,7 +32,10 @@ class Reddit
 end
 
 get '/' do
-  "This is not the route you want"
+  {
+    source: 'error',
+	results: ['This is not the route you want']
+  }.to_json
 end
 
 get '/hnews' do
