@@ -54,7 +54,7 @@ end
 get '/reddit' do
   content_type 'application/json'
   {
-    soruce: 'reddit',
+    source: 'reddit',
 	results: Reddit.all
   }.to_json
 end
