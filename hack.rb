@@ -1,45 +1,15 @@
 require 'scrapify'
 require 'sinatra'
-
-class HackerNews
-  include Scrapify::Base
-  html "http://news.ycombinator.com/"
-
-  attribute :text, xpath: "//td[@class='title']/a"
-  attribute :href, xpath: "//td[@class='title']/a/@href"
-
-  key :text
-end
-
-class Proggit
-  include Scrapify::Base
-  html "http://www.reddit.com/r/programming"
-  
-  attribute :text, xpath: "//p[@class='title']/a[@class='title ']"
-  attribute :href, xpath: "//p[@class='title']/a[@class='title ']/@href"
-  
-  key :text
-end
-
-class Reddit
-  include Scrapify::Base
-  html "http://www.reddit.com"
-  
-  attribute :text, xpath: "//p[@class='title']/a[@class='title ']"
-  attribute :href, xpath: "//p[@class='title']/a[@class='title ']/@href"
-  
-  key :text
-end
-
+require './models'
 
 get '/' do
   {
     source: 'error',
-	results: ['This is not the route you want']
+	results: [{text: 'This is not the route you want', href: nil}]
   }.to_json
 end
 
-get '/hnews' do
+get '/hacker_news' do
   begin
     query_results = HackerNews.all
 	rescue Exception => msg
