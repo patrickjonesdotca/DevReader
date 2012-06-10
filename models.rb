@@ -27,3 +27,13 @@ class Reddit
   
   key :text
 end
+
+class DZone
+  include Scrapify::Base
+  html "http://www.dzone.com"
+  
+  attribute :text, xpath: "//h3/a"
+  attribute :href, xpath: "//h3/a/@href"
+  
+  key :text
+end

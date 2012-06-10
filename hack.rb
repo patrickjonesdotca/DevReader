@@ -47,3 +47,17 @@ get '/reddit' do
 	results: query_results
   }.to_json
 end
+
+get '/dzone' do
+   begin
+    query_results = DZone.all
+	query_results.each { |t| begin t.text.gsub!("\n                  \n            \n        ",'') rescue '' end }
+	rescue Exception => msg
+	  query_results = [ msg ]
+  end
+  content_type 'application/json'
+  {
+    source: 'dzone',
+	results: query_results
+  }.to_json 
+end
