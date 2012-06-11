@@ -75,3 +75,16 @@ get '/slashdot' do
 	results: query_results
   }.to_json 
 end
+
+get '/bgr' do
+   begin
+    query_results = BGR.all
+	rescue Exception => msg
+	  query_results = [ msg ]
+  end
+  content_type 'application/json'
+  {
+    source: 'bgr',
+	results: query_results
+  }.to_json 
+end

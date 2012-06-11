@@ -47,3 +47,13 @@ class Slashdot
   
   key :text
 end
+
+class BGR
+  include Scrapify::Base
+  html "http://bgr.com"
+  
+  attribute :text, xpath: "//div[@class='post']/h2/a"
+  attribute :href, xpath: "//div[@class='post']/h2/a/@href"
+  
+  key :text
+end
