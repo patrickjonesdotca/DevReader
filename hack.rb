@@ -4,6 +4,7 @@ require './models'
 
 
 get '/' do
+  content_type 'application/json'
   {
     source: 'self',
 	results: [ {text: "Hacker News", href: "/hacker_news"}, {text: "Reddit/Programming", href: "/proggit"},
