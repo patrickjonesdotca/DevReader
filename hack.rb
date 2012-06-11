@@ -2,10 +2,15 @@ require 'scrapify'
 require 'sinatra'
 require './models'
 
+
 get '/' do
   {
-    source: 'error',
-	results: [{text: 'This is not the route you want', href: nil}]
+    source: 'self',
+	results: [ {text: "Hacker News", href: "/hacker_news"}, {text: "Reddit/Programming", href: "/proggit"},
+	{ text: "Reddit", href: "/reddit" }, { text: "DZone", href: "/dzone" }, { text: "Slashdot", href: "/slashdot"},
+	{ text: "BGR", href: "/bgr" }, { text: "Lillyputting", href: "/lillyputting"}, { text: "Wired", href: "/wired" },
+	{ text: "Singularity Hub", href: "/singularity_hub"}
+	]
   }.to_json
 end
 
