@@ -115,4 +115,18 @@ get '/wired' do
   }.to_json 
 end
 
+get '/singularity_hub' do
+   begin
+    query_results = SingularityHub.all
+	rescue Exception => msg
+	  query_results = [ msg ]
+  end
+  content_type 'application/json'
+  {
+    source: 'singularity_hub',
+	results: query_results
+  }.to_json 
+end
+
+
 

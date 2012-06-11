@@ -78,3 +78,14 @@ class Wired
   key :text
 end
 
+class SingularityHub
+  include Scrapify::Base
+  html "http://singularityhub.com/"
+  
+  attribute :text, xpath: "//h2/a"
+  attribute :href, xpath: "//h2/a/@href"
+  
+  key :text
+end
+
+
