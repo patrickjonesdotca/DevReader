@@ -88,3 +88,31 @@ get '/bgr' do
 	results: query_results
   }.to_json 
 end
+
+get '/lillyputting' do
+   begin
+    query_results = Lilyputting.all
+	rescue Exception => msg
+	  query_results = [ msg ]
+  end
+  content_type 'application/json'
+  {
+    source: 'lillyputting',
+	results: query_results
+  }.to_json 
+end
+
+get '/wired' do
+   begin
+    query_results = Wired.all
+	rescue Exception => msg
+	  query_results = [ msg ]
+  end
+  content_type 'application/json'
+  {
+    source: 'wired',
+	results: query_results
+  }.to_json 
+end
+
+

@@ -57,3 +57,24 @@ class BGR
   
   key :text
 end
+
+class Lilyputting
+  include Scrapify::Base
+  html "http://liliputing.com/"
+  
+  attribute :text, xpath: "//h2/a"
+  attribute :href, xpath: "//h2/a/@href"
+  
+  key :text
+end
+
+class Wired
+  include Scrapify::Base
+  html "http://www.wired.com/"
+  
+  attribute :text, xpath: "//h1/a"
+  attribute :href, xpath: "//h1/a/@href"
+  
+  key :text
+end
+
