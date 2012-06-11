@@ -7,7 +7,7 @@ get '/' do
   {
     source: 'self',
 	results: [ {text: "Hacker News", href: "/hacker_news"}, {text: "Reddit/Programming", href: "/proggit"},
-	{ text: "Reddit", href: "/reddit" }, { text: "DZone", href: "/dzone" }, { text: "Slashdot", href: "/slashdot"},
+	{ text: "Reddit", href: "/reddit" }, { text: "Slashdot", href: "/slashdot"},
 	{ text: "BGR", href: "/bgr" }, { text: "Lillyputting", href: "/lillyputting"}, { text: "Wired", href: "/wired" },
 	{ text: "Singularity Hub", href: "/singularity_hub"}
 	]
@@ -53,19 +53,6 @@ get '/reddit' do
   }.to_json
 end
 
-get '/dzone' do
-   begin
-    query_results = DZone.all
-	query_results.each { |t| begin t.text.gsub!("\n                  \n            \n        ",'') rescue '' end }
-	rescue Exception => msg
-	  query_results = [ msg ]
-  end
-  content_type 'application/json'
-  {
-    source: 'dzone',
-	results: query_results
-  }.to_json 
-end
 
 get '/slashdot' do
    begin

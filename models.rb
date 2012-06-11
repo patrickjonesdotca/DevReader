@@ -28,16 +28,6 @@ class Reddit
   key :text
 end
 
-class DZone
-  include Scrapify::Base
-  html "http://www.dzone.com/links/index.html"
-  
-  attribute :text, xpath: "//h3/a"
-  attribute :href, xpath: "//h3/a/@href"
-  
-  key :text
-end
-
 class Slashdot
   include Scrapify::Base
   html "http://www.slashdot.org"
