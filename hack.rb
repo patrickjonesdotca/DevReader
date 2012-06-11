@@ -71,7 +71,7 @@ get '/slashdot' do
   end
   content_type 'application/json'
   {
-    source: 'dzone',
+    source: 'slashdot',
 	results: query_results
   }.to_json 
 end
