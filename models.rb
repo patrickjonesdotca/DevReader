@@ -37,3 +37,13 @@ class DZone
   
   key :text
 end
+
+class Slashdot
+  include Scrapify::Base
+  html "http://www.slashdot.org"
+  
+  attribute :text, xpath: "//h2[@class='story']/span/a"
+  attribute :href, xpath: "//h2[@class='story']/span/a/@href"
+  
+  key :text
+end

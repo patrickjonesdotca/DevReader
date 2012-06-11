@@ -61,3 +61,17 @@ get '/dzone' do
 	results: query_results
   }.to_json 
 end
+
+get '/slashdot' do
+   begin
+    query_results = Slashdot.all
+	query_results.each { |t| begin t.href.gsub!("\/\/", "http://") rescue '' end }
+	rescue Exception => msg
+	  query_results = [ msg ]
+  end
+  content_type 'application/json'
+  {
+    source: 'dzone',
+	results: query_results
+  }.to_json 
+end
